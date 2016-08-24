@@ -1,0 +1,24 @@
+<project name="strategy" default="compilar">
+
+  <target name="compilar">
+    <delete dir="bin" />
+    <mkdir dir="bin" />
+
+    <javac srcdir="main" destdir="bin" >
+    </javac>
+  </target>
+
+  <target name="empacotar" depends="compilar">
+    <mkdir dir="jar" />
+    <jar destfile="jar/chainofresponsibility.jar" basedir="bin"/>
+  </target>
+
+  <target name="executar" depends="empacotar">
+    <java classname="main.TesteDeDescontos" fork="true">
+      <classpath>
+        <filelist files="jar/chainofresponsibility.jar"/>
+      </classpath>
+    </java>
+  </target>
+  
+</project>
